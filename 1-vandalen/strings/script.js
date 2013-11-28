@@ -7,9 +7,37 @@ window.onload = function(){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
+		
+	var newString = "";
+		
+	for(var i = 0; i < str.length; i += 1){
+        
+        var char = str.charAt(i);
+        
+        if(char == "a" || char == "A"){
+            newString += "#";
+        }
+        
+        else
+        {
+            if(char == str.charAt(i).toUpperCase()){
+                newString += str.charAt(i).toLowerCase();
+            }
+            
+            if(char == str.charAt(i).toLowerCase()){
+                newString += str.charAt(i).toUpperCase();
+            }
+        }
+	}
 
-
+        
+    if(newString.length === 0){
+        return "Ange en textsträng!";
+    }
+    
+    else{
+        return newString;
+    }
 
 
 

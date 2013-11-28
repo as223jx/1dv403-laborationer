@@ -4,15 +4,31 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-		
-
-
-			// Din kod här.
-
-
-
-
+	    
+	// Sätter en fast tid för att undvika problem med om klockan är före eller
+	// efter 12.
+    var userDate = new Date(date+"T23:59:59");
+    var nowDate = new Date();
+    
+    // Sätter året till dagens år.
+    userDate.setFullYear(nowDate.getFullYear());
+    
+    // Om användaren redan fyllt år detta år sätter jag året till nästa år för
+    // att undvika negativa resultat.
+    if(userDate.getTime() < nowDate.getTime()){
+        userDate.setFullYear(nowDate.getFullYear() + 1);
+    }
+    
+    var milPerDay = 86400000;
+    
+    // Räknar ut skillnaden i millisekunder på användarens födelsedag och dagens
+    // datum och delar med millisekunder per dagar för att få ut antalet dagar.
+    var result = Math.floor((userDate.getTime() - nowDate.getTime()) / milPerDay);
+    
+    return result;
+    
 	};
+	
 	// ------------------------------------------------------------------------------
 
 
