@@ -11,27 +11,35 @@ window.onload = function(){
 		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 		
 
-         if(number < 1 || number > 100)
+            if(number < 1 || number > 100)
             {
                 return [false, "Talet är utanför intervallet 0 - 100"];
             }
             
-            if(number < secret)
+            else
             {
-                count += 1;
-                return [false, "Det hemliga talet är högre!"];
-            }
-            
-            if(number > secret)
-            {
-                count += 1;
-                return [false, "Det hemliga talet är lägre!"];
-            }
-            
-            if(number == secret)
-            {
-                count += 1;
-                return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + count + " gissningar för att hitta det."]
+                if(number < secret)
+                {
+                    count += 1;
+                    return [false, "Det hemliga talet är högre!"];
+                }
+                
+                if(number > secret)
+                {
+                    count += 1;
+                    return [false, "Det hemliga talet är lägre!"];
+                }
+                
+                if(number == secret)
+                {
+                    count += 1;
+                    return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + count + " gissningar för att hitta det."];
+                }
+                
+                if(isNaN(number))
+                {
+                    return [false, "FEL! Du måste mata in siffror!"];
+                }
             }
 	};
 	
