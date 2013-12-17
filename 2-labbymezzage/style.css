@@ -1,0 +1,52 @@
+#container
+{
+    margin:auto;
+    padding-top:5px;
+    width:500px;
+    padding-bottom:20px;
+    background-color: #F7F36F;
+    border-style:solid;
+    border-width:1px;
+    border-color:#B5B121;
+}
+
+h1
+{
+    font-family:'verdana';
+    color:#B01946;
+    margin-top:10px;
+    margin-left:40px;
+}
+
+#div1
+{
+    text-align:right;
+    background-color: #fff;
+    width:400px;
+    margin-left:40px;
+    padding:10px;
+    border-style:solid;
+    border-width:1px;
+    border-color:#CFCFCF;
+}
+
+#textarea
+{
+    width:400px;
+    height:150px;
+    resize:none;
+}
+
+.peeTag
+{
+    margin-left:10px;
+}
+
+.text
+{
+    padding:5px;
+    background-color:#fff;
+    margin-top:10px;
+    margin-left:10px;
+    margin-right:10px;
+}
