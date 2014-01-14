@@ -7,7 +7,7 @@ var Memory = {
     
     open: [],
     
-    rows: 2,
+    rows: 4,
     cols: 4,
     
     rightCount: 0,
