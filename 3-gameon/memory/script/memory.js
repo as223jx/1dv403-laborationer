@@ -7,8 +7,12 @@ var Memory = {
     
     open: [],
     
-    rows: 4,
+    rows: 2,
     cols: 4,
+    
+    rightCount: 0,
+    
+    turnCount: 0,
     
     init:function(e){
         var newRandom = new RandomGenerator.getPictureArray(Memory.rows, Memory.cols);
@@ -65,31 +69,50 @@ var Memory = {
         
         a.onclick = function(){
             
-            pic.setAttribute("src", Memory.arr[counter]);
-            
-            Memory.open.push(counter);
-            
-            console.log("Öppen 1: " + Memory.open[0]);
-            console.log("Öppen 2: " + Memory.open[1]);
-            
-            if(Memory.open.length === 2){
-                if(Memory.arr[Memory.open[0]] === Memory.arr[Memory.open[1]]){
-                    console.log("Grattis!");
-                    Memory.open = [];
-                }
-                else{
-                    console.log("Feeeeel");
-                    setTimeout(function() {
-                        document.getElementById(Memory.open[0]).setAttribute("src", "pics/0.png");
-                        document.getElementById(Memory.open[1]).setAttribute("src", "pics/0.png");                        
-                    }, 500);
-
-                    Memory.open = [];
+            if (pic.getAttribute("src") === "pics/0.png"){
+                pic.setAttribute("src", Memory.arr[counter]);
+                
+                if(counter != Memory.open[0]){
+                Memory.open.push(counter);
+                
+                console.log("Öppen 1: " + Memory.open[0]);
+                console.log("Öppen 2: " + Memory.open[1]);
+                
+                    if(Memory.open.length === 2){
+                        Memory.turnCount += 1;
+                        
+                        if(Memory.arr[Memory.open[0]] === Memory.arr[Memory.open[1]]){
+                            console.log("Grattis!");
+                            Memory.rightCount += 1;
+                            console.log("BKILJA: " + Memory.rightCount);
+                            
+                            if (Memory.rightCount === (Memory.rows*Memory.cols)/2){
+                                var finish = document.getElementById("finished");
+                                var p = document.createElement("p");
+                                p.innerHTML = ("Grattis! Du klarade det på " + Memory.turnCount + " drag.");
+                                finish.appendChild(p);
+                            }
+                        }
+                        else{
+                            console.log("Feeeeel");
+                            Memory.turn(Memory.open[0], Memory.open[1]);
+                        }
+                        console.log("tfgyuijo: " + Memory.turnCount);
+                        Memory.open = [];
+                    }
                 }
             }
         };
         
         return varTd;
+    },
+    
+    turn:function(picOne, picTwo){
+        setTimeout(function() {
+            document.getElementById(picOne).setAttribute("src", "pics/0.png");
+            document.getElementById(picTwo).setAttribute("src", "pics/0.png");
+        }, 500);
+
     },
     
     
