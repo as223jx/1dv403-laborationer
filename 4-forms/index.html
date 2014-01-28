@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang ="sv">
+<html>
+  <head>
+   <meta charset="UTF-8" />
+    <title>Validering</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS -->
+    <link href="css.css" rel="stylesheet">
+
+  </head>
+  <body>
+<form id="form" class="form-horizontal" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post">
+<fieldset>
+<legend id="legend">Fyll i din betalningsplan</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Förnamn">Förnamn</label>  
+  <div class="col-md-4">
+  <input id="fornamn" name="Förnamn"  placeholder="Ange namn" class="form-control input-md" required="">
+  
+  </div>
+  <p id="fornamnFel"></p>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Efternamn">Efternamn</label>  
+  <div class="col-md-4">
+  <input id="efternamn" name="Efternamn" type="text" placeholder="Ange efternamn" class="form-control input-md" required="">
+    
+  </div>
+  <p id="efternamnFel"></p>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Postnummer">Postnummer</label>  
+  <div class="col-md-4">
+  <input id="postnummer" name="Postnummer" type="text" placeholder="Ange postnummer" class="form-control input-md" required="">
+    
+  </div>
+  <p id="postFel"></p>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Epost">E-post</label>  
+  <div class="col-md-4">
+  <input id="epost" name="Epost" type="text" placeholder="Ange e-post" class="form-control input-md" required="">
+    
+  </div>
+  <p id="emailFel"></p>
+</div>
+
+<!-- Drop down -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="buttondropdown">Prismodell</label>
+  <div class="col-md-4">
+    <div class="input-group">
+<fieldset class="form">
+      <select name="Rullgarding" id="dropDown">
+   <option value="Låg" selected>Låg</option>
+            <option value="Medel">Medel</option>              
+            <option value="Hög">Hög</option>
+ </select>
+</fieldset>
+      </div>
+    </div>
+  </div>
+<!-- Knapp -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button type="button" id="singlebutton" name="singlebutton" class="btn btn-primary">Skicka</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+<!-- Läs in javascripten -->
+<script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
