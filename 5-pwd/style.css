@@ -1,3 +1,5 @@
-container {
-	background-color: blue;
+#container {
+	background-color: #cc9999;
+	height: 950px;
+	width: 1650px;
 }
