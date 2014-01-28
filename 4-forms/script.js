@@ -1,7 +1,7 @@
 "use strict";
 
 var Validator = {
-    //Validator
+    
     init:function(){
         var button = document.querySelector("#singlebutton");
         
