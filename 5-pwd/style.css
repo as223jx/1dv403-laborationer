@@ -1,5 +1,46 @@
+body{
+    background-color:#fff;
+}
+    
 #container {
-	background-color: #cc9999;
-	height: 950px;
-	width: 1650px;
+    margin-top:20px;
+	background: url('https://c9.io/as223jx/1dv403-laborationer/workspace/5-pwd/pics/grey_wash_wall.png');
+	height: 900px;
+	width: 1424px;
+	margin-left:auto;
+	margin-right:auto;
+	border-style:solid;
+	border-width:2px;
+	border-color:#000;
+}
+#pic {
+    position:absolute;
+    top:850px;
+    margin-left:72px;
+    margin-top:5px;
+    z-index:2;
+}
+
+#footer {
+    position:absolute;
+    top:850px;
+    width: 1300px;
+    height: 50px;
+    background-color:#fff;
+    margin-left:62px;
+    margin-right:auto;
+    opacity:0.4;
+    z-index:1;
+    -webkit-box-shadow: 0px 10px 10px 0px rgba(37, 37, 37, 1);
+    -moz-box-shadow:    0px 10px 10px 0px rgba(37, 37, 37, 1);
+    box-shadow:         0px 10px 10px 0px rgba(37, 37, 37, 1);
+}
+
+#popup {
+    width:450px;
+    height:550px;
+    background-color:#fff;
+    position:absolute;
+    top:120px;
+    left:700px;
 }
