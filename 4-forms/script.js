@@ -20,7 +20,6 @@ var Validator = {
         if(p.firstChild !== null){
             p.removeChild(p.firstChild);
         }
-        
             if(allowedName.test(fornamnValue)){
                 fornamnInput.style.background = "transparent";
                 fornamnInput.style.borderColor="#66CD00";
@@ -38,12 +37,15 @@ var Validator = {
         efternamnInput.onblur = function(){
             var efternamnValue = document.querySelector("#efternamn").value; 
             var p = document.getElementById("efternamnFel");
+            
+            
             if(p.firstChild !== null){
                 p.removeChild(p.firstChild);
             }
             if(allowedName.test(efternamnValue)){
                 efternamnInput.style.background = "transparent";
                 efternamnInput.style.borderColor="#66CD00";
+                
                 return true;
             }
             else{
@@ -57,7 +59,8 @@ var Validator = {
         
         postalInput.onblur = function(){
             var postalValue = document.querySelector("#postnummer").value;
-            var replace = /^([SE]*)\s*(\d{3})[\s\-]*(\d\d)$/;
+            var re = /^([SE]*)\s*(\d{3})[\s\-]*(\d\d)$/;
+            
             
             var p = document.getElementById("postFel");
             if(p.firstChild !== null){
@@ -67,7 +70,7 @@ var Validator = {
             if(allowedPostalNumber.test(postalValue)){
                 postalInput.style.background = "transparent";
                 postalInput.style.borderColor="#66CD00";
-                postalValue = postalValue.replace(replace, '$2$3');
+                postalValue = postalValue.replace(re, "");
                 return true;
             }
             else{
@@ -109,6 +112,13 @@ var Validator = {
                 var emailValue = document.querySelector("#epost").value;
                 var dropDown = document.querySelector("#dropDown").value;
                 console.log(dropDown);
+                
+                // Grå bakgrund
+                
+                var shade = document.createElement("div");
+                shade.setAttribute("id", "shade");
+                document.body.appendChild(shade);
+                
                 // ----- Popuprutan -----
                 
                 // Yttre DIV:en och knappar
@@ -158,6 +168,7 @@ var Validator = {
                 buttonN.onclick = function(){
                     Validator.enable(fornamnInput, efternamnInput, postalInput, emailInput, button);
                     form.removeChild(div);
+                    document.body.removeChild(shade);
                     document.body.removeChild(buttonN);
                 };
                 
@@ -185,7 +196,7 @@ var Validator = {
         emailInput.removeAttribute("disabled");
         document.getElementById("dropDown").removeAttribute("disabled");
         button.removeAttribute("disabled");
-    }
+    },
 };
 
 window.onload = Validator.init;
