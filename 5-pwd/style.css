@@ -18,6 +18,17 @@ body {
 	border-color:#000;*/
 }
 
+.loader{
+	margin-top:490px;
+	margin-left:10px
+}
+
+.thumb{
+	display:inline-block;
+	float:left;
+	margin:5px
+}
+
 #pic {
     position:absolute;
     top:850px;

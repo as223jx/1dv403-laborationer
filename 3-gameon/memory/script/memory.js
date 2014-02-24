@@ -1,7 +1,6 @@
 "use strict";
 
 var Memory = {
-    random: [],
     
     arr: [],
     
@@ -17,9 +16,8 @@ var Memory = {
     init:function(e){
         var newRandom = new RandomGenerator.getPictureArray(Memory.rows, Memory.cols);
         var i;
-        Memory.random.push(newRandom);
         
-        
+        // Lägger in numrena från newRandom och skapar bildsökvägar i en array.
         for (i = 0; i < newRandom.length; i++){
             var picture = "pics/"+newRandom[i]+".png";
             Memory.arr.push(picture);
@@ -42,11 +40,9 @@ var Memory = {
             var tr = document.createElement("tr");
             
             for(var j = 0; j < cols; j+=1){
-                
-                
-                tr.appendChild(Memory.newTd(counter, memoryDiv));
-                // var picTwo = document.createElement("img");
-                // picTwo.setAttribute("src", Memory.arr[counter]);
+                // Skapar <td> för varje rad och skickar med counter för att
+                // ge unika ID:n till bilderna.
+                tr.appendChild(Memory.newTd(counter));
                 
                 counter +=1;
             }
@@ -57,7 +53,8 @@ var Memory = {
         
     },
     
-    newTd:function(counter, memoryDiv){
+    newTd:function(counter){
+        // Skapar <td>-elementen och lägger in klickbara bilder med ?-bilder.
         var varTd = document.createElement("td");
         var pic = document.createElement("img");
         pic.setAttribute("src", "pics/0.png");
@@ -68,23 +65,26 @@ var Memory = {
         a.appendChild(pic);
         
         a.onclick = function(){
-            
+            // Händer bara något om bilden man klickar på inte redan är uppvänd.
             if (pic.getAttribute("src") === "pics/0.png"){
                 pic.setAttribute("src", Memory.arr[counter]);
                 
+                // Tittar så bilden man klickar på inte är samma som den redan
+                // eventuellt uppvända bilden.
                 if(counter != Memory.open[0]){
                 Memory.open.push(counter);
                 
                 console.log("Öppen 1: " + Memory.open[0]);
                 console.log("Öppen 2: " + Memory.open[1]);
                 
+                // Räknar upp turnCount varje gång två nya bilder öppnats, samt
+                // kollar om bilderna är lika eller ej.
                     if(Memory.open.length === 2){
                         Memory.turnCount += 1;
                         
                         if(Memory.arr[Memory.open[0]] === Memory.arr[Memory.open[1]]){
-                            console.log("Grattis!");
                             Memory.rightCount += 1;
-                            console.log("BKILJA: " + Memory.rightCount);
+                            console.log("Antal rätt: " + Memory.rightCount);
                             
                             if (Memory.rightCount === (Memory.rows*Memory.cols)/2){
                                 var finish = document.getElementById("finished");
@@ -93,11 +93,11 @@ var Memory = {
                                 finish.appendChild(p);
                             }
                         }
+                        
                         else{
-                            console.log("Feeeeel");
                             Memory.turn(Memory.open[0], Memory.open[1]);
                         }
-                        console.log("tfgyuijo: " + Memory.turnCount);
+                        console.log("Omgång: " + Memory.turnCount);
                         Memory.open = [];
                     }
                 }

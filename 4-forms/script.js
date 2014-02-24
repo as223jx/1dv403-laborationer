@@ -6,8 +6,8 @@ var Validator = {
         var button = document.querySelector("#singlebutton");
         
         var allowedName = /^[\ws*$åäöÅÄÖ]/;
-        var allowedPostalNumber = /^[0-9]{5}$|^[0-9]{3}-[0-9]{2}$|^[0-9]{3}\s[0-9]{2}$|^SE\d{5}$|^SE\s\d{5}$|^SE\d{3}-\d{2}$|^SE\d{3}\s\d{2}$|^SE\s[0-9]{3}\s[0-9]{2}$|^SE\s[0-9]{3}-\d{2}$/;
-        var allowedEmail = /\S+@\S+\.\S+/;
+        var allowedPostalNumber = /^\d{5}$|^\d{3}-\d{2}$|^\d{3}\s\d{2}$|^SE\d{5}$|^SE\s\d{5}$|^SE\d{3}-\d{2}$|^SE\d{3}\s\d{2}$|^SE\s\d{3}\s\d{2}$|^SE\s\d{3}-\d{2}$/;
+        var allowedEmail = /([^.|\s])\S+@([^.|\s])\S+\.\S+/;
         
         var fornamnInput = document.querySelector("#fornamn");
         var efternamnInput = document.querySelector("#efternamn");
@@ -17,6 +17,7 @@ var Validator = {
         fornamnInput.onblur = function(){
         var fornamnValue = document.querySelector("#fornamn").value;
         var p = document.getElementById("fornamnFel");
+        
         if(p.firstChild !== null){
             p.removeChild(p.firstChild);
         }
@@ -38,10 +39,10 @@ var Validator = {
             var efternamnValue = document.querySelector("#efternamn").value; 
             var p = document.getElementById("efternamnFel");
             
-            
             if(p.firstChild !== null){
                 p.removeChild(p.firstChild);
             }
+            
             if(allowedName.test(efternamnValue)){
                 efternamnInput.style.background = "transparent";
                 efternamnInput.style.borderColor="#66CD00";
@@ -59,10 +60,8 @@ var Validator = {
         
         postalInput.onblur = function(){
             var postalValue = document.querySelector("#postnummer").value;
-            var re = /^([SE]*)\s*(\d{3})[\s\-]*(\d\d)$/;
-            
-            
             var p = document.getElementById("postFel");
+            
             if(p.firstChild !== null){
                 p.removeChild(p.firstChild);
             }
@@ -70,7 +69,7 @@ var Validator = {
             if(allowedPostalNumber.test(postalValue)){
                 postalInput.style.background = "transparent";
                 postalInput.style.borderColor="#66CD00";
-                postalValue = postalValue.replace(re, "");
+                postalInput.value = postalInput.value.replace(/[^\d]/g, '');
                 return true;
             }
             else{
@@ -111,7 +110,6 @@ var Validator = {
                 var postalValue = document.querySelector("#postnummer").value;
                 var emailValue = document.querySelector("#epost").value;
                 var dropDown = document.querySelector("#dropDown").value;
-                console.log(dropDown);
                 
                 // Grå bakgrund
                 
