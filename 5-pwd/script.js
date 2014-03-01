@@ -77,7 +77,7 @@ var Desktop = {
         loadImg:function(bilder, div){
         	var height = 0;
         	var width = 0;
-        	for (var i = 0; i < bilder.lenght; i++) {
+        	for (var i = 0; i < bilder.length; i++) {
         		if(height < bilder[i].thumbHeight){
         			height = bilder[i].thumbHeight;
         			console.log(height + "heightht");
@@ -96,8 +96,8 @@ var Desktop = {
         		var pic = document.createElement("img");
         		pic.setAttribute("class", "thumb");
         		pic.setAttribute("src", bilder[i].thumbURL);
-        		pic.setAttribute("width", bilder[i].thumbWidth);
-        		pic.setAttribute("height", bilder[i].thumbHeight);
+        		pic.setAttribute("width", width);
+        		pic.setAttribute("height", height);
         		var url = bilder[i].URL;
         		cont.appendChild(aTag);
         		aTag.appendChild(pic);
